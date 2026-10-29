@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flash Sales</title>
+
+    <style>
+        /* General Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: linear-gradient(110deg, #ff3366, #ff402d);
+            min-height: 100vh;
+            color: #111;
+        }
+
+        /* Header */
+        .header {
+            height: 80px;
+            background: linear-gradient(110deg, #98213d, #a52b20);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 32px;
+            font-weight: 800;
+        }
+
+        /* Navigation */
+        .navbar {
+            height: 44px;
+            background: #111;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 16px;
+        }
+
+        .menu-btn {
+            color: white;
+            background: none;
+            border: none;
+            font-size: 29px;
+            cursor: pointer;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .nav-links a:hover {
+            color: #ff426e;
+        }
+
+        .search-box {
+            width: 150px;
+            padding: 5px 8px;
+            border: none;
+            border-radius: 4px;
+            outline: none;
+        }
+
+        /* Main Section */
+        .main-content {
+            padding: 46px 25px 35px;
+        }
+
+        .section-title {
+            text-align: center;
+            color: white;
+            font-size: 24px;
+            margin-bottom: 21px;
+        }
+
+        /* Product Grid */
+        .product-container {
+            display: grid;
+            grid-template-columns: repeat(6, minmax(0, 1fr));
+            gap: 17px;
+        }
+
+        /* Product Card */
+        .product-card {
+            background: white;
+            border-radius: 13px;
+            min-height: 183px;
+            padding: 34px 10px 16px;
+            text-align: center;
+            position: relative;
+            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
+            transition: transform 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .discount {
+            position: absolute;
+            top: 9px;
+            left: 9px;
+            background: #ff1025;
+            color: white;
+            font-size: 10px;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .product-card h3 {
+            font-size: 15px;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .product-card p {
+            font-size: 14px;
+            margin-bottom: 19px;
+        }
+
+        .price {
+            font-size: 16px;
+            font-weight: 800;
+            margin-bottom: 12px;
+        }
+
+        .price del {
+            color: #888;
+            font-size: 12px;
+            font-weight: normal;
+        }
+
+        /* Buy Button */
+        .buy-btn {
+            background: #ff3d78;
+            color: white;
+            border: none;
+            padding: 6px 13px;
+            border-radius: 7px;
+            font-size: 12px;
+            cursor: pointer;
+        }
+
+        .buy-btn:hover {
+            background: #e91e63;
+        }
+
+        /* Footer */
+        .footer {
+            padding: 20px;
+            text-align: center;
+            color: white;
+            font-size: 13px;
+        }
+
+        /* Tablet */
+        @media (max-width: 1200px) {
+            .product-container {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+            .header {
+                height: 70px;
+            }
+
+            .header h1 {
+                font-size: 27px;
+            }
+
+            .navbar {
+                height: auto;
+                min-height: 50px;
+                flex-wrap: wrap;
+                gap: 10px;
+                padding: 10px;
+            }
+
+            .nav-links {
+                gap: 12px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .menu-btn {
+                font-size: 24px;
+            }
+
+            .search-box {
+                width: 100%;
+            }
+
+            .main-content {
+                padding: 35px 15px;
+            }
+
+            .section-title {
+                font-size: 20px;
+                margin-bottom: 25px;
+            }
+
+            .product-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 13px;
+            }
+
+            .product-card {
+                padding: 38px 8px 16px;
+                min-height: 180px;
+            }
+
+            .product-card h3 {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+
+            .product-card p {
+                font-size: 12px;
+                margin-bottom: 15px;
+            }
+
+            .price {
+                font-size: 14px;
+            }
+
+            .price del {
+                font-size: 10px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .product-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <h1>Flash Sales</h1>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <button class="menu-btn" aria-label="Menu">&#9776;</button>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#sales">Sales</a>
+            <a href="#about">About Us</a>
+        </div>
+
+        <input type="search" class="search-box" placeholder="Search...">
+    </nav>
+
+    <!-- Products -->
+    <main id="home" class="main-content">
+
+        <h2 id="sales" class="section-title">
+            🔥 Today's Flash Deals
+        </h2>
+
+        <section class="product-container">
+
+            <article class="product-card">
+                <span class="discount">50% OFF</span>
+                <h3>Smartphone</h3>
+                <p>Latest 5G Android Phone</p>
+                <div class="price">
+                    ₹15,999 <del>₹31,999</del>
+                </div>
+                <button class="buy-btn">Buy Now</button>
+            </article>
+
+            <article class="product-card">
+                <span class="discount">30% OFF</span>
+                <h3>Wireless Headphones</h3>
+                <p>Noise Cancelling</p>
+                <div class="price">
+                    ₹3,499 <del>₹4,999</del>
+                </div>
+                <button class="buy-btn">Buy Now</button>
+            </article>
+
+            <article class="product-card">
+                <span class="discount">60% OFF</span>
+                <h3>Men's Jacket</h3>
+                <p>Winter Stylish Wear</p>
+                <div class="price">
+                    ₹1,999 <del>₹4,999</del>
+                </div>
+                <button class="buy-btn">Buy Now</button>
+            </article>
+
+            <article class="product-card">
+                <span class="discount">45% OFF</span>
+                <h3>Smartwatch</h3>
+                <p>Fitness + Notifications</p>
+                <div class="price">
+                    ₹2,199 <del>₹3,999</del>
+                </div>
+                <button class="buy-btn">Buy Now</button>
+            </article>
+
+            <article class="product-card">
+                <span class="discount">25% OFF</span>
+                <h3>Laptop</h3>
+                <p>i5 11th Gen, 8GB RAM</p>
+                <div class="price">
+                    ₹49,999 <del>₹66,999</del>
+                </div>
+                <button class="buy-btn">Buy Now</button>
+            </article>
+
+            <article class="product-card">
+                <span class="discount">40% OFF</span>
+                <h3>Sports Shoes</h3>
+                <p>Comfort Running Shoes</p>
+                <div class="price">
+                    ₹2,999 <del>₹4,999</del>
+                </div>
+                <button class="buy-btn">Buy Now</button>
+            </article>
+
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="about" class="footer">
+        <p>© 2026 Flash Sales | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
