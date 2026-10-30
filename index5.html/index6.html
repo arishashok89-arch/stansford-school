@@ -1,357 +1,767 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Flash Sales</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        /* General Styles */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+<title>Toys & Fancy Store - Flash Sales</title>
 
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-            background: linear-gradient(110deg, #ff3366, #ff402d);
-            min-height: 100vh;
-            color: #111;
-        }
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        /* Header */
-        .header {
-            height: 80px;
-            background: linear-gradient(110deg, #98213d, #a52b20);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(110deg, #ff3157, #ff4436);
+    color: #111;
+}
 
-        .header h1 {
-            color: white;
-            font-size: 32px;
-            font-weight: 800;
-        }
+/* HEADER */
+header {
+    background: linear-gradient(90deg, #9e263c, #9d291f);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
 
-        /* Navigation */
-        .navbar {
-            height: 44px;
-            background: #111;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 16px;
-        }
+header h1 {
+    font-size: 30px;
+    font-weight: bold;
+}
 
-        .menu-btn {
-            color: white;
-            background: none;
-            border: none;
-            font-size: 29px;
-            cursor: pointer;
-        }
+/* NAVIGATION */
+nav {
+    background: #111;
+    min-height: 43px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 18px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-        }
+.menu-icon {
+    color: white;
+    font-size: 27px;
+    cursor: pointer;
+}
 
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: bold;
-        }
+.nav-links {
+    display: flex;
+    justify-content: center;
+    gap: 28px;
+}
 
-        .nav-links a:hover {
-            color: #ff426e;
-        }
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+}
 
-        .search-box {
-            width: 150px;
-            padding: 5px 8px;
-            border: none;
-            border-radius: 4px;
-            outline: none;
-        }
+.nav-links a:hover {
+    color: #ff4081;
+}
 
-        /* Main Section */
-        .main-content {
-            padding: 46px 25px 35px;
-        }
+.search-box input {
+    width: 145px;
+    padding: 6px;
+    border: none;
+    border-radius: 5px;
+}
 
-        .section-title {
-            text-align: center;
-            color: white;
-            font-size: 24px;
-            margin-bottom: 21px;
-        }
+/* PAGE CONTENT */
+.container {
+    padding: 28px 24px 35px;
+}
 
-        /* Product Grid */
-        .product-container {
-            display: grid;
-            grid-template-columns: repeat(6, minmax(0, 1fr));
-            gap: 17px;
-        }
+.section-title {
+    color: white;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 20px;
+}
 
-        /* Product Card */
-        .product-card {
-            background: white;
-            border-radius: 13px;
-            min-height: 183px;
-            padding: 34px 10px 16px;
-            text-align: center;
-            position: relative;
-            box-shadow: 0 5px 12px rgba(0, 0, 0, 0.18);
-            transition: transform 0.3s;
-        }
+/* PRODUCT GRID */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 15px;
+}
 
-        .product-card:hover {
-            transform: translateY(-5px);
-        }
+/* WHITE PRODUCT BOXES */
+.product-card {
+    background: white;
+    border-radius: 13px;
+    padding: 12px 10px 16px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.23);
+    transition: transform 0.3s;
+    overflow: hidden;
+}
 
-        .discount {
-            position: absolute;
-            top: 9px;
-            left: 9px;
-            background: #ff1025;
-            color: white;
-            font-size: 10px;
-            padding: 5px 10px;
-            border-radius: 5px;
-        }
+.product-card:hover {
+    transform: translateY(-5px);
+}
 
-        .product-card h3 {
-            font-size: 15px;
-            font-weight: 800;
-            margin-bottom: 20px;
-        }
+/* DISCOUNT LABEL */
+.discount {
+    position: absolute;
+    top: 9px;
+    left: 8px;
+    background: #ff1728;
+    color: white;
+    font-size: 10px;
+    font-weight: bold;
+    padding: 5px 8px;
+    border-radius: 4px;
+}
 
-        .product-card p {
-            font-size: 14px;
-            margin-bottom: 19px;
-        }
+/* PRODUCT IMAGE */
+.product-card img {
+    width: 100%;
+    height: 125px;
+    object-fit: contain;
+    margin: 12px auto 5px;
+    display: block;
+}
 
-        .price {
-            font-size: 16px;
-            font-weight: 800;
-            margin-bottom: 12px;
-        }
+.product-card h3 {
+    font-size: 15px;
+    margin: 8px 0;
+    min-height: 36px;
+}
 
-        .price del {
-            color: #888;
-            font-size: 12px;
-            font-weight: normal;
-        }
+.product-card p {
+    font-size: 13px;
+    margin: 7px 0;
+    min-height: 34px;
+}
 
-        /* Buy Button */
-        .buy-btn {
-            background: #ff3d78;
-            color: white;
-            border: none;
-            padding: 6px 13px;
-            border-radius: 7px;
-            font-size: 12px;
-            cursor: pointer;
-        }
+.price {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 8px 0;
+}
 
-        .buy-btn:hover {
-            background: #e91e63;
-        }
+.old-price {
+    font-size: 11px;
+    color: #888;
+    text-decoration: line-through;
+    margin-left: 3px;
+}
 
-        /* Footer */
-        .footer {
-            padding: 20px;
-            text-align: center;
-            color: white;
-            font-size: 13px;
-        }
+/* BUY BUTTON */
+.buy-btn {
+    background: #f43d78;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    padding: 7px 15px;
+    cursor: pointer;
+    font-size: 11px;
+    margin-top: 5px;
+}
 
-        /* Tablet */
-        @media (max-width: 1200px) {
-            .product-container {
-                grid-template-columns: repeat(3, minmax(0, 1fr));
-            }
-        }
+.buy-btn:hover {
+    background: #c2185b;
+}
 
-        /* Mobile */
-        @media (max-width: 600px) {
-            .header {
-                height: 70px;
-            }
+/* OTHER SECTIONS */
+.content-section {
+    background: white;
+    margin: 25px 24px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px #0002;
+}
 
-            .header h1 {
-                font-size: 27px;
-            }
+.content-section h2 {
+    text-align: center;
+    color: #e91e63;
+    margin-bottom: 18px;
+}
 
-            .navbar {
-                height: auto;
-                min-height: 50px;
-                flex-wrap: wrap;
-                gap: 10px;
-                padding: 10px;
-            }
+.content-section p {
+    text-align: center;
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
 
-            .nav-links {
-                gap: 12px;
-            }
+/* CATEGORY CARDS */
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
 
-            .nav-links a {
-                font-size: 12px;
-            }
+.category {
+    background: #fff0f5;
+    text-align: center;
+    padding: 20px 10px;
+    border-radius: 10px;
+}
 
-            .menu-btn {
-                font-size: 24px;
-            }
+.category span {
+    font-size: 35px;
+}
 
-            .search-box {
-                width: 100%;
-            }
+.category h3 {
+    color: #ad1457;
+    margin-top: 8px;
+}
 
-            .main-content {
-                padding: 35px 15px;
-            }
+/* TABLE */
+.table-wrap {
+    overflow-x: auto;
+}
 
-            .section-title {
-                font-size: 20px;
-                margin-bottom: 25px;
-            }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 550px;
+}
 
-            .product-container {
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 13px;
-            }
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: center;
+}
 
-            .product-card {
-                padding: 38px 8px 16px;
-                min-height: 180px;
-            }
+th {
+    background: #9d263c;
+    color: white;
+}
 
-            .product-card h3 {
-                font-size: 14px;
-                margin-bottom: 15px;
-            }
+tbody tr:nth-child(even) {
+    background: #fff0f5;
+}
 
-            .product-card p {
-                font-size: 12px;
-                margin-bottom: 15px;
-            }
+/* GALLERY */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+}
 
-            .price {
-                font-size: 14px;
-            }
+.gallery-grid img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    border-radius: 10px;
+}
 
-            .price del {
-                font-size: 10px;
-            }
-        }
+/* FORMS */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    max-width: 750px;
+    margin: auto;
+}
 
-        @media (max-width: 360px) {
-            .product-container {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+.form-group {
+    margin-bottom: 12px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-family: inherit;
+}
+
+.form-group textarea {
+    min-height: 90px;
+}
+
+.submit-btn {
+    display: block;
+    background: #f43d78;
+    color: white;
+    border: none;
+    padding: 11px 25px;
+    border-radius: 7px;
+    cursor: pointer;
+    margin: 10px auto;
+}
+
+.message {
+    text-align: center;
+    color: #16803c;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* FOOTER */
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 22px;
+}
+
+footer a {
+    color: #ff80ab;
+    text-decoration: none;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1100px) {
+    .product-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 650px) {
+    header h1 {
+        font-size: 23px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .nav-links {
+        order: 3;
+        width: 100%;
+        gap: 15px;
+        flex-wrap: wrap;
+    }
+
+    .search-box input {
+        width: 120px;
+    }
+
+    .container {
+        padding: 22px 12px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+
+    .product-card img {
+        height: 105px;
+    }
+
+    .product-card h3 {
+        font-size: 13px;
+    }
+
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .form-grid {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .content-section {
+        margin: 18px 12px;
+        padding: 18px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <!-- Header -->
-    <header class="header">
-        <h1>Flash Sales</h1>
-    </header>
+<!-- HEADER -->
+<header>
+    <h1>🧸 Toys & Fancy Store 🎁</h1>
+    <p>Flash Sales - Amazing Toys, Gifts & Accessories!</p>
+</header>
 
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <button class="menu-btn" aria-label="Menu">&#9776;</button>
+<!-- NAVIGATION -->
+<nav>
+    <div class="menu-icon">☰</div>
 
-        <div class="nav-links">
-            <a href="#home">Home</a>
-            <a href="#sales">Sales</a>
-            <a href="#about">About Us</a>
+    <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#sales">Sales</a>
+        <a href="#categories">Categories</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+    </div>
+
+    <div class="search-box">
+        <input type="search" id="searchInput"
+               placeholder="Search..."
+               oninput="searchProducts()">
+    </div>
+</nav>
+
+<!-- FLASH SALES -->
+<main class="container" id="home">
+
+    <h2 class="section-title" id="sales">
+        🔥 Today's Flash Deals
+    </h2>
+
+    <div class="product-grid" id="productGrid">
+
+        <!-- PRODUCT 1 -->
+        <div class="product-card" data-name="teddy bear soft toy">
+            <span class="discount">50% OFF</span>
+            <img src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=400&q=80"
+                 alt="Soft teddy bear">
+            <h3>Soft Teddy Bear</h3>
+            <p>Soft and cuddly teddy</p>
+            <div class="price">
+                ₹499 <span class="old-price">₹999</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Soft Teddy Bear',499)">
+                Buy Now
+            </button>
         </div>
 
-        <input type="search" class="search-box" placeholder="Search...">
-    </nav>
+        <!-- PRODUCT 2 -->
+        <div class="product-card" data-name="building blocks toy">
+            <span class="discount">30% OFF</span>
+            <img src="https://images.unsplash.com/photo-1599623560574-39d485900c95?auto=format&fit=crop&w=400&q=80"
+                 alt="Building blocks toy">
+            <h3>Building Blocks</h3>
+            <p>Creative learning toy</p>
+            <div class="price">
+                ₹349 <span class="old-price">₹499</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Building Blocks',349)">
+                Buy Now
+            </button>
+        </div>
 
-    <!-- Products -->
-    <main id="home" class="main-content">
+        <!-- PRODUCT 3 -->
+        <div class="product-card" data-name="toy car racing">
+            <span class="discount">40% OFF</span>
+            <img src="https://images.unsplash.com/photo-1560961911-ba7ef651a56c?auto=format&fit=crop&w=400&q=80"
+                 alt="Toy car">
+            <h3>Mini Toy Car</h3>
+            <p>Fun racing adventures</p>
+            <div class="price">
+                ₹299 <span class="old-price">₹499</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Mini Toy Car',299)">
+                Buy Now
+            </button>
+        </div>
 
-        <h2 id="sales" class="section-title">
-            🔥 Today's Flash Deals
-        </h2>
+        <!-- PRODUCT 4 -->
+        <div class="product-card" data-name="doll toy">
+            <span class="discount">45% OFF</span>
+            <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=400&q=80"
+                 alt="Colorful toy collection">
+            <h3>Kids Toy Set</h3>
+            <p>Fun playtime collection</p>
+            <div class="price">
+                ₹549 <span class="old-price">₹999</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Kids Toy Set',549)">
+                Buy Now
+            </button>
+        </div>
 
-        <section class="product-container">
+        <!-- PRODUCT 5 -->
+        <div class="product-card" data-name="art craft stationery">
+            <span class="discount">25% OFF</span>
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=400&q=80"
+                 alt="Art and craft kit">
+            <h3>Art & Craft Kit</h3>
+            <p>Creative art supplies</p>
+            <div class="price">
+                ₹299 <span class="old-price">₹399</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Art & Craft Kit',299)">
+                Buy Now
+            </button>
+        </div>
 
-            <article class="product-card">
-                <span class="discount">50% OFF</span>
-                <h3>Smartphone</h3>
-                <p>Latest 5G Android Phone</p>
-                <div class="price">
-                    ₹15,999 <del>₹31,999</del>
-                </div>
-                <button class="buy-btn">Buy Now</button>
-            </article>
+        <!-- PRODUCT 6 -->
+        <div class="product-card" data-name="gift hamper fancy gift">
+            <span class="discount">40% OFF</span>
+            <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=400&q=80"
+                 alt="Gift hamper">
+            <h3>Fancy Gift Hamper</h3>
+            <p>Perfect for celebrations</p>
+            <div class="price">
+                ₹599 <span class="old-price">₹999</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Fancy Gift Hamper',599)">
+                Buy Now
+            </button>
+        </div>
 
-            <article class="product-card">
-                <span class="discount">30% OFF</span>
-                <h3>Wireless Headphones</h3>
-                <p>Noise Cancelling</p>
-                <div class="price">
-                    ₹3,499 <del>₹4,999</del>
-                </div>
-                <button class="buy-btn">Buy Now</button>
-            </article>
+        <!-- PRODUCT 7 -->
+        <div class="product-card" data-name="fashion jewellery accessories">
+            <span class="discount">35% OFF</span>
+            <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=400&q=80"
+                 alt="Fancy jewellery">
+            <h3>Fancy Jewellery</h3>
+            <p>Beautiful fashion accessories</p>
+            <div class="price">
+                ₹259 <span class="old-price">₹399</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Fancy Jewellery',259)">
+                Buy Now
+            </button>
+        </div>
 
-            <article class="product-card">
-                <span class="discount">60% OFF</span>
-                <h3>Men's Jacket</h3>
-                <p>Winter Stylish Wear</p>
-                <div class="price">
-                    ₹1,999 <del>₹4,999</del>
-                </div>
-                <button class="buy-btn">Buy Now</button>
-            </article>
+        <!-- PRODUCT 8 -->
+        <div class="product-card" data-name="handbag fancy bag">
+            <span class="discount">20% OFF</span>
+            <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=400&q=80"
+                 alt="Fashion handbag">
+            <h3>Fancy Handbag</h3>
+            <p>Stylish everyday accessory</p>
+            <div class="price">
+                ₹799 <span class="old-price">₹999</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Fancy Handbag',799)">
+                Buy Now
+            </button>
+        </div>
 
-            <article class="product-card">
-                <span class="discount">45% OFF</span>
-                <h3>Smartwatch</h3>
-                <p>Fitness + Notifications</p>
-                <div class="price">
-                    ₹2,199 <del>₹3,999</del>
-                </div>
-                <button class="buy-btn">Buy Now</button>
-            </article>
+        <!-- PRODUCT 9 -->
+        <div class="product-card" data-name="school bag stationery">
+            <span class="discount">25% OFF</span>
+            <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=400&q=80"
+                 alt="Bag">
+            <h3>Kids School Bag</h3>
+            <p>Everyday school companion</p>
+            <div class="price">
+                ₹599 <span class="old-price">₹799</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Kids School Bag',599)">
+                Buy Now
+            </button>
+        </div>
 
-            <article class="product-card">
-                <span class="discount">25% OFF</span>
-                <h3>Laptop</h3>
-                <p>i5 11th Gen, 8GB RAM</p>
-                <div class="price">
-                    ₹49,999 <del>₹66,999</del>
-                </div>
-                <button class="buy-btn">Buy Now</button>
-            </article>
+        <!-- PRODUCT 10 -->
+        <div class="product-card" data-name="colorful crayons drawing">
+            <span class="discount">30% OFF</span>
+            <img src="https://images.unsplash.com/photo-1513364776144-60967b0f800f?auto=format&fit=crop&w=400&q=80"
+                 alt="Colorful art supplies">
+            <h3>Coloring Kit</h3>
+            <p>Colors for little artists</p>
+            <div class="price">
+                ₹209 <span class="old-price">₹299</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Coloring Kit',209)">
+                Buy Now
+            </button>
+        </div>
 
-            <article class="product-card">
-                <span class="discount">40% OFF</span>
-                <h3>Sports Shoes</h3>
-                <p>Comfort Running Shoes</p>
-                <div class="price">
-                    ₹2,999 <del>₹4,999</del>
-                </div>
-                <button class="buy-btn">Buy Now</button>
-            </article>
+        <!-- PRODUCT 11 -->
+        <div class="product-card" data-name="birthday gift decoration">
+            <span class="discount">20% OFF</span>
+            <img src="https://images.unsplash.com/photo-1464349153735-7db50ed83c84?auto=format&fit=crop&w=400&q=80"
+                 alt="Birthday celebration">
+            <h3>Birthday Gift Pack</h3>
+            <p>Make celebrations special</p>
+            <div class="price">
+                ₹399 <span class="old-price">₹499</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Birthday Gift Pack',399)">
+                Buy Now
+            </button>
+        </div>
 
-        </section>
-    </main>
+        <!-- PRODUCT 12 -->
+        <div class="product-card" data-name="soft plush toy">
+            <span class="discount">35% OFF</span>
+            <img src="https://images.unsplash.com/photo-1562040506-a9b32cb51b94?auto=format&fit=crop&w=400&q=80"
+                 alt="Plush toy">
+            <h3>Plush Toy</h3>
+            <p>A cute and cuddly friend</p>
+            <div class="price">
+                ₹389 <span class="old-price">₹599</span>
+            </div>
+            <button class="buy-btn"
+                    onclick="buyProduct('Plush Toy',389)">
+                Buy Now
+            </button>
+        </div>
 
-    <!-- Footer -->
-    <footer id="about" class="footer">
-        <p>© 2026 Flash Sales | All Rights Reserved</p>
-    </footer>
+    </div>
 
-</body>
-</html>
+    <p id="noResults" style="display:none;text-align:center;color:white;margin-top:20px;">
+        No products found. Try another search.
+    </p>
+</main>
+
+<!-- CATEGORIES -->
+<section class="content-section" id="categories">
+    <h2>🛍️ Shop By Category</h2>
+
+    <div class="category-grid">
+        <div class="category">
+            <span>🧸</span>
+            <h3>Soft Toys</h3>
+            <p>Teddy bears and plush toys</p>
+        </div>
+
+        <div class="category">
+            <span>🚗</span>
+            <h3>Toy Cars</h3>
+            <p>Cars and vehicle toys</p>
+        </div>
+
+        <div class="category">
+            <span>🎨</span>
+            <h3>Stationery</h3>
+            <p>Art and craft supplies</p>
+        </div>
+
+        <div class="category">
+            <span>🎀</span>
+            <h3>Fancy Items</h3>
+            <p>Accessories and gifts</p>
+        </div>
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="content-section" id="about">
+    <h2>About Our Store</h2>
+
+    <p>
+        Welcome to Toys & Fancy Store, your colourful destination
+        for toys, gifts, stationery and fashionable accessories.
+        Discover playful products, creative supplies and thoughtful
+        gifts for birthdays, celebrations and everyday fun.
+    </p>
+
+    <p>
+        Our sample online store showcases product cards, prices,
+        discounts and interactive shopping features in a colourful
+        shopping website design.
+    </p>
+</section>
+
+<!-- PRODUCT TABLE -->
+<section class="content-section">
+    <h2>📋 Product Price List</h2>
+
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No.</th>
+                    <th>Product</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Discount</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr><td>1</td><td>Soft Teddy Bear</td><td>Soft Toys</td><td>₹499</td><td>50%</td></tr>
+                <tr><td>2</td><td>Building Blocks</td><td>Educational Toys</td><td>₹349</td><td>30%</td></tr>
+                <tr><td>3</td><td>Mini Toy Car</td><td>Vehicles</td><td>₹299</td><td>40%</td></tr>
+                <tr><td>4</td><td>Kids Toy Set</td><td>Toys</td><td>₹549</td><td>45%</td></tr>
+                <tr><td>5</td><td>Art & Craft Kit</td><td>Stationery</td><td>₹299</td><td>25%</td></tr>
+                <tr><td>6</td><td>Fancy Gift Hamper</td><td>Gifts</td><td>₹599</td><td>40%</td></tr>
+                <tr><td>7</td><td>Fancy Jewellery</td><td>Accessories</td><td>₹259</td><td>35%</td></tr>
+                <tr><td>8</td><td>Fancy Handbag</td><td>Accessories</td><td>₹799</td><td>20%</td></tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<!-- GALLERY -->
+<section class="content-section" id="gallery">
+    <h2>📸 Toys & Fancy Gallery</h2>
+
+    <div class="gallery-grid">
+        <img src="https://images.unsplash.com/photo-1559454403-b8fb88521f11?auto=format&fit=crop&w=500&q=80" alt="Soft toy">
+        <img src="https://images.unsplash.com/photo-1599623560574-39d485900c95?auto=format&fit=crop&w=500&q=80" alt="Toy blocks">
+        <img src="https://images.unsplash.com/photo-1513201099705-a9746e1e201f?auto=format&fit=crop&w=500&q=80" alt="Gift box">
+        <img src="https://images.unsplash.com/photo-1535632066927-ab7c9ab60908?auto=format&fit=crop&w=500&q=80" alt="Jewellery">
+    </div>
+</section>
+
+<!-- ORDER FORM -->
+<section class="content-section" id="order">
+    <h2>🛒 Order Enquiry Form</h2>
+
+    <form id="orderForm">
+        <div class="form-grid">
+
+            <div class="form-group">
+                <label for="customerName">Full Name</label>
+                <input type="text" id="customerName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone"
+                       pattern="[0-9]{10}" maxlength="10"
+                       placeholder="10-digit number" required>
+            </div>
+
+            <div class="form-group">
+                <label for="selectedProduct">Product</label>
+                <select id="selectedProduct" required>
+                    <option value="">Choose a product</option>
+                    <option>Soft Teddy Bear</option>
+                    <option>Building Blocks</option>
+                    <option>Mini Toy Car</option>
+                    <option>Kids Toy Set</option>
+                    <option>Art & Craft Kit</option>
+                    <option>Fancy Gift Hamper</option>
+                    <option>Fancy Jewellery</option>
+                    <option>Fancy Handbag</option>
+                    <option>Kids School Bag</option>
+                    <option>Coloring Kit</option>
+                    <option>Birthday Gift Pack</option>
+                    <option>Plush Toy</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity"
+                       min="1" max="100" value="1" required>
+            </div>
+
+            <div class="form-group">

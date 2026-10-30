@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Toy Story World | Toy Adventures</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff7d6;
+    color: #222;
+    line-height: 1.7;
+}
+
+header {
+    background: linear-gradient(90deg, #0057b8, #00a6ff);
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+header h1 {
+    font-size: 40px;
+    letter-spacing: 2px;
+}
+
+header p {
+    font-size: 18px;
+}
+
+nav {
+    background: #ffcf33;
+    text-align: center;
+    padding: 14px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: #17346b;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px 14px;
+    display: inline-block;
+}
+
+nav a:hover {
+    background: #ff7733;
+    color: white;
+    border-radius: 8px;
+}
+
+.hero {
+    min-height: 450px;
+    background: linear-gradient(135deg, #0b5ed7, #00c6ff, #ffe45e);
+    color: white;
+    text-align: center;
+    padding: 90px 20px;
+}
+
+.hero h2 {
+    font-size: 48px;
+    margin-bottom: 15px;
+    text-shadow: 2px 3px 5px #333;
+}
+
+.hero p {
+    font-size: 20px;
+    max-width: 750px;
+    margin: auto;
+}
+
+.btn {
+    display: inline-block;
+    background: #ff5733;
+    color: white;
+    text-decoration: none;
+    padding: 12px 22px;
+    margin: 15px 6px;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background: #d93025;
+    transform: scale(1.04);
+}
+
+section {
+    padding: 50px 7%;
+}
+
+.section-title {
+    text-align: center;
+    color: #0749a4;
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.about {
+    background: #ffffff;
+    text-align: center;
+}
+
+.about p {
+    max-width: 900px;
+    margin: auto;
+}
+
+.characters {
+    background: linear-gradient(120deg, #ffe9a8, #ffd0dc);
+}
+
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+}
+
+.card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px #0002;
+    text-align: center;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 10px 22px #0003;
+}
+
+.card img {
+    width: 100%;
+    height: 230px;
+    object-fit: cover;
+}
+
+.card h3 {
+    color: #0057b8;
+    padding: 10px;
+}
+
+.card p {
+    padding: 0 15px 18px;
+}
+
+.movies {
+    background: #dff5ff;
+}
+
+.table-container {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    margin: 20px 0;
+}
+
+th {
+    background: #0057b8;
+    color: white;
+}
+
+th, td {
+    border: 1px solid #bbb;
+    padding: 13px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background: #fff1bc;
+}
+
+tr:hover {
+    background: #d6f5ff;
+}
+
+.gallery {
+    background: #e9ddff;
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+}
+
+.gallery-grid img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 4px solid white;
+    transition: 0.3s;
+}
+
+.gallery-grid img:hover {
+    transform: scale(1.04);
+}
+
+.adventures {
+    background: linear-gradient(120deg, #d9ffdd, #fff1ad);
+}
+
+.adventure-box {
+    background: white;
+    margin: 15px 0;
+    padding: 20px;
+    border-left: 7px solid #ff5733;
+    border-radius: 10px;
+}
+
+.adventure-box h3 {
+    color: #0057b8;
+}
+
+.form-section {
+    background: #ffe2ed;
+}
+
+.form-box {
+    background: white;
+    padding: 28px;
+    max-width: 750px;
+    margin: 20px auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px #0002;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    margin-top: 6px;
+    border: 1px solid #aaa;
+    border-radius: 7px;
+    font-size: 15px;
+}
+
+textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.google-form {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    max-width: 750px;
+    margin: auto;
+}
+
+.google-form iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+}
+
+.contact {
+    background: #d7f9ee;
+    text-align: center;
+}
+
+footer {
+    background: #12284c;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+footer a {
+    color: #ffe45e;
+}
+
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 29px;
+    }
+
+    .hero h2 {
+        font-size: 34px;
+    }
+
+    nav a {
+        padding: 7px;
+        font-size: 14px;
+    }
+
+    section {
+        padding: 35px 5%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>🤠 TOY STORY WORLD 🚀</h1>
+    <p>Adventure, Friendship, Imagination and Fun!</p>
+</header>
+
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#characters">Characters</a>
+    <a href="#movies">Movies</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#adventures">Adventures</a>
+    <a href="#googleform">Google Form</a>
+    <a href="#feedback">Feedback</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- HOME SECTION -->
+<section class="hero" id="home">
+    <h2>To Infinity and Beyond! 🚀</h2>
+
+    <p>
+        Welcome to Toy Story World, an exciting fan-made website
+        celebrating Woody, Buzz Lightyear, Jessie and their amazing
+        adventures. Discover the characters, explore the movies,
+        and celebrate the magic of friendship!
+    </p>
+
+    <a href="#characters" class="btn">Meet the Characters</a>
+    <a href="#movies" class="btn">Explore the Movies</a>
+</section>
+
+<!-- ABOUT SECTION -->
+<section class="about" id="about">
+    <h2 class="section-title">🌟 About Toy Story</h2>
+
+    <p>
+        Toy Story is a beloved animated film franchise created by
+        Pixar Animation Studios. The story follows a group of toys
+        that come alive when humans are not around. Their exciting
+        journeys explore friendship, loyalty, courage, teamwork,
+        growing up and learning to accept change.
+    </p>
+
+    <p>
+        Woody is a loyal cowboy toy, while Buzz Lightyear is a space
+        ranger who learns what friendship truly means. Together with
+        their friends, they discover that every adventure is better
+        when they work together.
+    </p>
+
+    <br>
+
+    <h3>Why Fans Love Toy Story ❤️</h3>
+
+    <p>
+        Memorable characters • Funny adventures • Beautiful animation
+        • Emotional stories • Friendship • Imagination
+    </p>
+</section>
+
+<!-- CHARACTER SECTION -->
+<section class="characters" id="characters">
+    <h2 class="section-title">🧸 Meet the Characters</h2>
+
+    <div class="card-container">
+
+        <div class="card">
+            <img
+              src="https://lumiere-a.akamaihd.net/v1/images/pp_woody_herobanner_mobile_19736_3f7a1f7d.jpeg"
+              alt="Woody cowboy toy"
+              loading="lazy">
+            <h3>🤠 Woody</h3>
+            <p>A brave cowboy who cares deeply about his friends
+            and always tries to do the right thing.</p>
+        </div>
+
+        <div class="card">
+            <img
+              src="https://lumiere-a.akamaihd.net/v1/images/pp_buzzlightyear_herobanner_mobile_19736_0b8f3d7e.jpeg"
+              alt="Buzz Lightyear space ranger"
+              loading="lazy">
+            <h3>🚀 Buzz Lightyear</h3>
+            <p>A space ranger who discovers the importance of
+            teamwork, loyalty and believing in himself.</p>
+        </div>
+
+        <div class="card">
+            <img
+              src="https://lumiere-a.akamaihd.net/v1/images/pp_jessie_herobanner_mobile_19736_9eab9b15.jpeg"
+              alt="Jessie the cowgirl"
+              loading="lazy">
+            <h3>🤠 Jessie</h3>
+            <p>An energetic cowgirl who brings courage,
+            excitement and enthusiasm to every adventure.</p>
+        </div>
+
+        <div class="card">
+            <img
+              src="https://lumiere-a.akamaihd.net/v1/images/pp_rex_herobanner_mobile_19736_3c1f6bb9.jpeg"
+              alt="Rex the dinosaur toy"
+              loading="lazy">
+            <h3>🦖 Rex</h3>
+            <p>A friendly dinosaur who may be nervous sometimes
+            but always wants to help his friends.</p>
+        </div>
+
+        <div class="card">
+            <img
+              src="https://lumiere-a.akamaihd.net/v1/images/pp_lotso_herobanner_mobile_19736_3b3f4bb2.jpeg"
+              alt="Lotso bear"
+              loading="lazy">
+            <h3>🧸 Lotso</h3>
+            <p>A strawberry-scented pink bear whose complicated
+            story plays an important role in Toy Story 3.</p>
+        </div>
+
+        <div class="card">
+            <img
+              src="https://lumiere-a.akamaihd.net/v1/images/pp_forky_herobanner_mobile_19736_7f9d0f21.jpeg"
+              alt="Forky character"
+              loading="lazy">
+            <h3>🍴 Forky</h3>
+            <p>A handmade craft who begins a surprising journey
+            of self-discovery in Toy Story 4.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- MOVIES TABLE -->
+<section class="movies" id="movies">
+    <h2 class="section-title">🎬 Toy Story Movie Collection</h2>
+
+    <p>
+        Explore the main Toy Story films and learn about the
+        adventures that make each story special.
+    </p>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>No.</th>
+                    <th>Movie</th>
+                    <th>Release Year</th>
+                    <th>Main Theme</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Toy Story</td>
+                    <td>1995</td>
+                    <td>Friendship and jealousy</td>
+                </tr>
+
+                <tr>
+                    <td>2</td>
+                    <td>Toy Story 2</td>
+                    <td>1999</td>
+                    <td>Identity and belonging</td>
+                </tr>
+
+                <tr>
+                    <td>3</td>
+                    <td>Toy Story 3</td>
+                    <td>2010</td>
+                    <td>Growing up and letting go</td>
+                </tr>
+
+                <tr>
+                    <td>4</td>
+                    <td>Toy Story 4</td>
+                    <td>2019</td>
+                    <td>Purpose and new beginnings</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h3>Movie Highlights</h3>
+
+    <ul>
+        <li>The original friendship between Woody and Buzz.</li>
+        <li>The discovery of Woody's past in Toy Story 2.</li>
+        <li>The emotional farewell in Toy Story 3.</li>
+        <li>Forky's journey and Woody's choices in Toy Story 4.</li>
+    </ul>
+</section>
+
+<!-- GALLERY -->
+<section class="gallery" id="gallery">
+    <h2 class="section-title">📸 Toy Story Image Gallery</h2>
+
+    <p style="text-align:center; margin-bottom:25px;">
+        Explore a collection of images featuring memorable
+        characters and colourful animated adventures.
+    </p>
+
+    <div class="gallery-grid">
+        <img
+          src="https://images.unsplash.com/photo-1531058020387-3be344556be6?auto=format&fit=crop&w=700&q=80"
+          alt="Colourful entertainment event"
+          loading="lazy">
+
+        <img
+          src="https://images.unsplash.com/photo-1558060370-d644479cb6f7?auto=format&fit=crop&w=700&q=80"
+          alt="Colourful toy figures"
+          loading="lazy">
+
+        <img
+          src="https://images.unsplash.com/photo-1560961911-ba7ef651a56c?auto=format&fit=crop&w=700&q=80"
+          alt="Colourful toy collection"
+          loading="lazy">
+
+        <img
+          src="https://images.unsplash.com/photo-1599623560574-39d485900c95?auto=format&fit=crop&w=700&q=80"
+          alt="Toy collection"
+          loading="lazy">
+
+        <img
+          src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?auto=format&fit=crop&w=700&q=80"
+          alt="Toys and playtime"
+          loading="lazy">
+
+        <img
+          src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?auto=format&fit=crop&w=700&q=80"
+          alt="Colourful children's toys"
+          loading="lazy">
+    </div>
+
+    <p style="text-align:center; margin-top:20px;">
+        Note: Gallery images are illustrative and may not depict
+        actual Toy Story characters. Internet access is required
+        to load the remote images.
+    </p>
+</section>
+
+<!-- ADVENTURES -->
+<section class="adventures" id="adventures">
+    <h2 class="section-title">🌈 Adventures and Fun Facts</h2>
+
+    <div class="adventure-box">
+        <h3>🚀 Space Ranger Adventure</h3>
+        <p>
+            Imagine exploring distant planets, solving mysteries
+            and helping friends just like a space ranger.
+        </p>
+    </div>
+
+    <div class="adventure-box">
+        <h3>🤠 Cowboy Adventure</h3>
+        <p>
+            Join Woody on an imaginary Wild West adventure filled
+            with teamwork, courage and exciting discoveries.
+        </p>
+    </div>
+
+    <div class="adventure-box">
+        <h3>🤝 Friendship Challenge</h3>
+        <p>
+            Help a friend, share your toys, listen carefully
+            and remember that everyone deserves kindness.
+        </p>
+    </div>
+
+    <div class="adventure-box">
+        <h3>💡 Lessons from Toy Story</h3>
+        <ul>
+            <li>Friendship is more important than competition.</li>
+            <li>Be brave when facing something new.</li>
+            <li>Accept people for who they are.</li>
+            <li>Teamwork can solve difficult problems.</li>
+            <li>Change can lead to exciting opportunities.</li>
+        </ul>
+    </div>
+</section>
+
+<!-- GOOGLE FORM -->
+<section class="form-section" id="googleform">
+    <h2 class="section-title">📝 Google Form — Fan Registration</h2>
+
+    <div class="google-form">
+        <h3>Join Toy Story World!</h3>
+
+        <p>
+            Embed your own Google Form below to collect fan
+            registrations, favourite characters and suggestions.
+        </p>
+
+        <br>
+
+        <p>
+            <strong>Setup instructions:</strong>
+            Create a form in Google Forms, select
+            <em>Send → Embed HTML (&lt;/&gt;)</em>, copy the
+            iframe embed code and replace the placeholder below
+            with that code.
+        </p>
+
+        <div style="margin-top:25px; padding:20px;
+                    background:#fff1bc; border-radius:10px;">
+            <p>
+                Your Google Form will appear here after you add
+                its embed code.
+            </p>
+            <p>
+                <a
+                  class="btn"
+                  href="https://forms.google.com/"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Create a Google Form
+                </a>
+            </p>
+        </div>
+
+        <!-- REPLACE THIS COMMENT WITH YOUR GOOGLE FORM IFRAME -->
+        <!-- Example:
+        <iframe
+          src="YOUR_GOOGLE_FORM_EMBED_URL"
+          width="100%"
+          height="600"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0">
+          Loading…
+        </iframe>
+        -->
+    </div>
+</section>
+
+<!-- FEEDBACK FORM -->
+<section class="form-section" id="feedback">
+    <h2 class="section-title">⭐ Fan Feedback Form</h2>
+
+    <div class="form-box">
+        <form action="#" method="get"
+              onsubmit="alert('Thank you for visiting Toy Story World! This demo form does not save responses.'); return false;">
+
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name"
+                   placeholder="Enter your name" required>
+
+            <label for="email">Email Address</label>
+            <input type="email" id="email" name="email"
+                   placeholder="Enter your email" required>
+
+            <label for="character">Favourite Character</label>
+            <select id="character" name="character" required>
+                <option value="">Choose a character</option>
+                <option>Woody</option>
+                <option>Buzz Lightyear</option>
+                <option>Jessie</option>
+                <option>Rex</option>
+                <option>Lotso</option>
+                <option>Forky</option>
+            </select>
+
+            <label for="rating">Rate Our Website</label>
+            <select id="rating" name="rating" required>
+                <option value="">Select your rating</option>
+                <option>⭐⭐⭐⭐⭐ Excellent</option>
+                <option>⭐⭐⭐⭐ Very Good</option>
+                <option>⭐⭐⭐ Good</option>
+                <option>⭐⭐ Average</option>
+                <option>⭐ Needs Improvement</option>
+            </select>
+
+            <label for="message">Your Suggestions</label>
+            <textarea id="message" name="message"
+                      placeholder="Tell us what you think..."></textarea>
+
+            <button class="btn" type="submit">
+                Submit Feedback
+            </button>
+
+            <button class="btn" type="reset">
+                Clear Form
+            </button>
+
+        </form>
+    </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+    <h2 class="section-title">📞 Contact and Information</h2>
+
+    <p><strong>Website:</strong> Toy Story World</p>
+    <p><strong>Purpose:</strong> Fan-made educational website</p>
+    <p><strong>Topics:</strong> Characters, movies, adventures and friendship</p>
+
+    <p>
+        For official Toy Story information, visit
+        <a href="https://www.pixar.com/"
+           target="_blank" rel="noopener noreferrer">
+           Pixar
+        </a>
+        or
+        <a href="https://www.disney.com/"
+           target="_blank" rel="noopener noreferrer">
+           Disney
+        </a>.
+    </p>
+
+    <br>
+
+    <a href="#home" class="btn">⬆️ Back to Top</a>
+</section>
+
+<footer>
+    <h3>🤠 Toy Story World 🚀</h3>
+
+    <p>Celebrating imagination, friendship and adventure.</p>
+
+    <p>
+        This is an unofficial fan-made website.
+        Toy Story and its characters belong to their respective
+        copyright and trademark owners.
+    </p>
+
+    <p>&copy; 2026 Toy Story World — Fan Project</p>
+</footer>
+
+</body>
+</html>
+        <

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>stansfordSchool</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #f4f7fc;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background: #123c69;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+/* NAVIGATION */
+nav {
+    background: #0b2545;
+    padding: 15px;
+    text-align: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 8px 12px;
+    font-weight: bold;
+    display: inline-block;
+}
+
+nav a:hover {
+    color: #ffd166;
+}
+
+/* COMMON SECTIONS */
+section {
+    padding: 45px 20px;
+    scroll-margin-top: 65px;
+}
+
+.container {
+    max-width: 1100px;
+    margin: auto;
+}
+
+h2 {
+    text-align: center;
+    color: #123c69;
+    margin-bottom: 25px;
+    font-size: 30px;
+}
+
+h3 {
+    color: #2471a3;
+    margin-bottom: 10px;
+}
+
+p {
+    margin-bottom: 12px;
+}
+
+/* HOME BANNER */
+.hero {
+    background: linear-gradient(120deg, #2471a3, #52b788);
+    color: white;
+    text-align: center;
+    padding: 85px 20px;
+    border-radius: 12px;
+}
+
+.hero h2 {
+    color: white;
+    font-size: 38px;
+}
+
+.hero p {
+    font-size: 18px;
+}
+
+.button {
+    display: inline-block;
+    background: #ffd166;
+    color: #123c69;
+    padding: 12px 24px;
+    text-decoration: none;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.button:hover {
+    background: #ffbd33;
+}
+
+/* CARDS */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #00000012;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+/* ABOUT */
+#about {
+    background: #eaf2f8;
+}
+
+.center-text {
+    text-align: center;
+    max-width: 850px;
+    margin: auto;
+}
+
+/* TABLES */
+.table-container {
+    overflow-x: auto;
+    margin-top: 20px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: white;
+    min-width: 550px;
+}
+
+th, td {
+    border: 1px solid #d5dce5;
+    padding: 13px;
+    text-align: center;
+}
+
+th {
+    background: #123c69;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background: #edf4fa;
+}
+
+tr:hover {
+    background: #dcecf9;
+}
+
+/* ADMISSION FORM */
+#admissions {
+    background: #eaf2f8;
+}
+
+form {
+    max-width: 700px;
+    margin: auto;
+    background: white;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.form-row {
+    margin-bottom: 16px;
+}
+
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccd4df;
+    border-radius: 5px;
+    font-size: 15px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: 2px solid #2471a3;
+    border-color: transparent;
+}
+
+/* GALLERY */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 18px;
+}
+
+.gallery-item {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 3px 12px #00000015;
+}
+
+.gallery img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.04);
+}
+
+.gallery-item p {
+    text-align: center;
+    padding: 12px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* CONTACT */
+#contact {
+    background: #eaf2f8;
+}
+
+.contact-box {
+    background: white;
+    max-width: 700px;
+    margin: auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 3px 12px #00000012;
+}
+
+.contact-box p {
+    margin: 15px 0;
+}
+
+/* FOOTER */
+footer {
+    background: #0b2545;
+    color: white;
+    text-align: center;
+    padding: 25px 15px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+footer a {
+    color: #ffd166;
+    text-decoration: none;
+}
+
+/* MOBILE RESPONSIVE */
+@media (max-width: 600px) {
+    header h1 {
+        font-size: 28px;
+    }
+
+    nav a {
+        margin: 5px 7px;
+        font-size: 14px;
+    }
+
+    .hero {
+        padding: 55px 15px;
+    }
+
+    .hero h2 {
+        font-size: 28px;
+    }
+
+    h2 {
+        font-size: 25px;
+    }
+
+    form {
+        padding: 20px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HEADER -->
+<header>
+    <h1>stansford School</h1>
+    <p>Learn Today, Lead Tomorrow</p>
+</header>
+
+<!-- NAVIGATION -->
+<nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#academics">Academics</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#timetable">Timetable</a>
+    <a href="#admissions">Admissions</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<!-- HOME SECTION -->
+<section id="home">
+    <div class="container">
+
+        <div class="hero">
+            <h2>Welcome to stansford School</h2>
+
+            <p>
+                Discover knowledge, develop skills, and build a brighter future.
+            </p>
+
+            <a href="#admissions" class="button">
+                Apply for Admission
+            </a>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>📚 Quality Education</h3>
+                <p>
+                    We provide a supportive learning environment
+                    that helps students achieve academic success.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>👩‍🏫 Experienced Teachers</h3>
+                <p>
+                    Our teachers encourage curiosity, creativity,
+                    discipline, and independent thinking.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🏆 Student Development</h3>
+                <p>
+                    Sports, arts, and other activities help students
+                    develop confidence and teamwork.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT SECTION -->
+<section id="about">
+    <div class="container">
+
+        <h2>About Our School</h2>
+
+        <div class="center-text">
+            <p>
+                stansfordSchool is dedicated to providing quality
+                education in a friendly and supportive environment.
+                We help students develop knowledge, confidence,
+                creativity, and good values.
+            </p>
+        </div>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>Our Mission</h3>
+                <p>
+                    To provide quality education and help every
+                    student reach their full potential.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Our Vision</h3>
+                <p>
+                    To prepare responsible, confident, and
+                    knowledgeable citizens for tomorrow.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>Our Values</h3>
+                <p>
+                    Respect, honesty, discipline, teamwork,
+                    kindness, and creativity.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ACADEMICS SECTION -->
+<section id="academics">
+    <div class="container">
+
+        <h2>Our Academics</h2>
+
+        <p class="center-text">
+            We encourage students to learn through classroom teaching,
+            practical activities, projects, and group discussions.
+        </p>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Class</th>
+                        <th>Subjects</th>
+                        <th>Learning Focus</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Class I - II</td>
+                        <td>English, Maths, EVS</td>
+                        <td>Basic Skills</td>
+                    </tr>
+
+                    <tr>
+                        <td>Class III - V</td>
+                        <td>English, Maths, Science, Social Studies</td>
+                        <td>Foundation Learning</td>
+                    </tr>
+
+                    <tr>
+                        <td>Class VI - VIII</td>
+                        <td>English, Maths, Science, Social Science</td>
+                        <td>Knowledge Development</td>
+                    </tr>
+
+                    <tr>
+                        <td>Class IX - X</td>
+                        <td>English, Maths, Science, Social Science</td>
+                        <td>Secondary Education</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+
+<!-- FACILITIES SECTION -->
+<section id="facilities">
+    <div class="container">
+
+        <h2>Our School Facilities</h2>
+
+        <div class="cards">
+
+            <div class="card">
+                <h3>📖 Library</h3>
+                <p>
+                    Books, reference materials, and reading spaces
+                    encourage students to explore new ideas.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🔬 Science Laboratory</h3>
+                <p>
+                    Practical experiments help students understand
+                    scientific concepts.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>💻 Computer Laboratory</h3>
+                <p>
+                    Students learn computer basics and digital skills
+                    in a supervised environment.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>⚽ Sports Ground</h3>
+                <p>
+                    Outdoor activities promote fitness, teamwork,
+                    and sportsmanship.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🎨 Art Room</h3>
+                <p>
+                    Creative activities give students opportunities
+                    to express their ideas.
+                </p>
+            </div>
+
+            <div class="card">
+                <h3>🚌 Transport</h3>
+                <p>
+                    School transport arrangements can help students
+                    travel to and from school.
+                </p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- TIMETABLE SECTION -->
+<section id="timetable">
+    <div class="container">
+
+        <h2>Class Timetable</h2>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Time</th>
+                        <th>Monday</th>
+                        <th>Tuesday</th>
+                        <th>Wednesday</th>
+                        <th>Thursday</th>
+                        <th>Friday</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>9:00 - 10:00</td>
+                        <td>English</td>
+                        <td>Maths</td>
+                        <td>Science</td>
+                        <td>English</td>
+                        <td>Maths</td>
+                    </tr>
+
+                    <tr>
+                        <td>10:00 - 11:00</td>
+                        <td>Maths</td>
+                        <td>Science</td>
+                        <td>English</td>
+                        <td>Social Studies</td>
+                        <td>Science</td>
+                    </tr>
+
+                    <tr>
+                        <td>11:00 - 11:30</td>
+                        <td colspan="5">Break Time</td>
+                    </tr>
+
+                    <tr>
+                        <td>11:30 - 12:30</td>
+                        <td>Science</td>
+                        <td>English</td>
+                        <td>Maths</td>
+                        <td>Computer</td>
+                        <td>Art</td>
+                    </tr>
+
+                    <tr>
+                        <td>12:30 - 1:30</td>
+                        <td>Sports</td>
+                        <td>Computer</td>
+                        <td>Social Studies</td>
+                        <td>Maths</td>
+                        <td>Sports</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+
+<!-- ADMISSION FORM -->
+<section id="admissions">
+    <div class="container">
+
+        <h2>Student Admission Enquiry</h2>
+
+        <form action="#" method="get">
+
+            <div class="form-row">
+                <label for="student">Student Name</label>
+                <input
+                    type="text"
+                    id="student"
+                    name="student"
+                    placeholder="Enter student name"
+                    required>
+            </div>
+
+            <div class="form-row">
+                <label for="parent">Parent / Guardian Name</label>
+                <input
+                    type="text"
+                    id="parent"
+                    name="parent"
+                    placeholder="Enter parent name"
+                    required>
+            </div>
+
+            <div class="form-row">
+                <label for="email">Email Address</label>
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="Enter email address"
+                    required>
+            </div>
+
+            <div class="form-row">
+                <label for="phone">Phone Number</label>
+                <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    placeholder="Enter phone number"
+                    required>
+            </div>
+
+            <div class="form-row">
+                <label for="class">Applying for Class</label>
+
+                <select id="class" name="class" required>
+                    <option value="">Select a class</option>
+                    <option>Class I</option>
+                    <option>Class II</option>
+                    <option>Class III</option>
+                    <option>Class IV</option>
+                    <option>Class V</option>
+                    <option>Class VI</option>
+                    <option>Class VII</option>
+                    <option>Class VIII</option>
+                    <option>Class IX</option>
+                    <option>Class X</option>
+                </select>
+            </div>
+
+            <div class="form-row">
+                <label for="message">Additional Information</label>
+                <textarea
+                    id="message"
+                    name="message"
+                    placeholder="Write your enquiry here"></textarea>
+            </div>
+
+            <button type="submit" class="button">
+                Submit Enquiry
+            </button>
+
+        </form>
+
+    </div>
+</section>
+
+<!-- SCHOOL GALLERY -->
+<section id="gallery">
+    <div class="container">
+
+        <h2>Our School Gallery</h2>
+
+        <p class="center-text">
+            Explore classroom learning, school facilities,
+            student activities, and our campus.
+        </p>
+
+        <div class="gallery">
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=800&q=80"
+                    alt="Students learning in a classroom"
+                    loading="lazy">
+                <p>Classroom Learning</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=800&q=80"
+                    alt="School building and campus"
+                    loading="lazy">
+                <p>Our School Campus</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80"
+                    alt="Teacher helping students in class"
+                    loading="lazy">
+                <p>Teacher and Students</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1588072432836-e10032774350?auto=format&fit=crop&w=800&q=80"
+                    alt="Students participating in school activities"
+                    loading="lazy">
+                <p>Learning Activities</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?auto=format&fit=crop&w=800&q=80"
+                    alt="Student studying and reading"
+                    loading="lazy">
+                <p>Reading and Learning</p>
+            </div>
+
+            <div class="gallery-item">
+                <img
+                    src="https://images.unsplash.com/photo-1529390079861-591de354faf5?auto=format&fit=crop&w=800&q=80"
+                    alt="Students enjoying school activities"
+                    loading="lazy">
+                <p>Student Activities</p>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- CONTACT SECTION -->
+<section id="contact">
+    <div class="container">
+
+        <h2>Contact Us</h2>
+
+        <div class="contact-box">
+
+            <p>
+                <strong>School Name:</strong>
+                stansford School
+            </p>
+
+            <p>
+                <strong>Address:</strong>
+                Main Road, Pondicherry, India
+            </p>
+
+            <p>
+                <strong>Phone:</strong>
+                +91 98765 43210
+            </p>
+
+            <p>
+                <strong>Email:</strong>
+                info@stansford.example
+            </p>
+
+            <p>
+                <strong>School Hours:</strong>
+                Monday to Friday, 9 AM - 4 PM
+            </p>
+
+            <a href="#home" class="button">Back to Home</a>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2026 stansford School. All Rights Reserved.</p>
+    <p>Learn Today, Lead Tomorrow.</p>
+    <p><a href="#home">Back to Top ↑</a></p>
+</footer>
+
+</body>
+</html>
